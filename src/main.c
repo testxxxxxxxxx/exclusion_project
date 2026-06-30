@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
 	MPI_Status status;
 	int provided;
 	struct User {
-		int rank, size;
+		int rank, size, lamport;
 		enum STATES {
 			REST,
 			WAIT,
@@ -24,6 +24,7 @@ int main(int argc, char* argv[]) {
 
 	struct User* u = malloc(sizeof(struct User));
 	pthread_mutex_t criticalMut = PTHREAD_MUTEX_INITIALIZER, lamportMut = PTHREAD_MUTEX_INITIALIZER;
+	u->lamport = 0;
 
 	MPI_Init_thread(&argc, &argv, MPI_THREAD_MULTIPLE, &provided);
 
