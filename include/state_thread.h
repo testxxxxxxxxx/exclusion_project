@@ -1,2 +1,4 @@
 #include <pthread.h>
-void state(pthread_mutex_t* criticalMut, pthread_mutex_t* lamportMut);
+extern struct User;
+
+void state(struct User* u, pthread_mutex_t* criticalMut, pthread_mutex_t* lamportMut);
