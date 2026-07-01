@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
+#include <pthread.h>
 #include "../include/main.h"
+#include "../include/user.h"
 #include "../include/message_thread.h"
 #include "../include/state_thread.h"
 
@@ -9,7 +11,7 @@ int main(int argc, char* argv[]) {
 	pthread_t messageThread;
 	MPI_Status status;
 	int provided;
-	struct User {
+	/*struct User {
 		int rank, size, lamport;
 		enum STATES {
 			REST,
@@ -20,7 +22,7 @@ int main(int argc, char* argv[]) {
 			REQUEST,
 			ACK
 		} msg;
-	};	
+	};*/	
 
 	struct User* u = malloc(sizeof(struct User));
 	pthread_mutex_t criticalMut = PTHREAD_MUTEX_INITIALIZER, lamportMut = PTHREAD_MUTEX_INITIALIZER;
